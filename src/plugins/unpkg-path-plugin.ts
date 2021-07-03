@@ -10,6 +10,13 @@ export const unpkgPathPlugin = () => {
         if(args.path === 'index.js') {
           return { path: args.path, namespace: 'a', };
       } 
+      
+      if(args.path.includes("./") || args.path.includes("../")) {
+        return {
+          namespace: "a",
+          path: new URL(args.path, args.importer + "/").href
+        }
+      }
 
       return {
         namespace: "a",
@@ -30,7 +37,7 @@ export const unpkgPathPlugin = () => {
           return {
             loader: 'jsx',
             contents: `
-              const message = require('tiny-test-pkg');
+              const message = require('medium-test-pkg');
               console.log(message);
             `,
           };
