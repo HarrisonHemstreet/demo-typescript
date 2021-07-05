@@ -1,7 +1,8 @@
-import { useTypeSelector } from "../hooks/use-type-selector";
+import { useTypedSelector } from "../hooks/use-type-selector";
 
 const CellList: React.FC = () => {
-	useTypeSelector((state) => state);
+	const cells = useTypedSelector(( { cells: { order, data } }) => order.map((id) => data[id]));
+
 	return <div>CELL LIST</div>;
 };
 
