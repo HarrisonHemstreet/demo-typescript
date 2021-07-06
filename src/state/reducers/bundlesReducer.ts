@@ -7,12 +7,12 @@ interface BundlesState {
     loading: boolean;
     code: string;
     err: string;
-  }
+  } | undefined;
 }
 
 const initialState: BundlesState = {};
 
-const reducer = produce((state: BundlesState = initialState action: Action): BundlesState => {
+const reducer = produce((state: BundlesState = initialState, action: Action): BundlesState => {
   switch(action.type) {
     case ActionType.BUNDLE_START:
       state[action.payload.cellId] = {

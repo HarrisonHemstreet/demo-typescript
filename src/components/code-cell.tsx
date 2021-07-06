@@ -4,7 +4,7 @@ import Preview from './Preview';
 import Resizable from "./resizable";
 import { Cell } from "../state";
 import { useActions } from "../hooks/use-actions";
-import { useTypedSelector } from "./hooks/use-type-selector";
+import { useTypedSelector } from "../hooks/use-type-selector";
 
 interface CodeCellProps {
 	cell: Cell
@@ -33,7 +33,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
 						onChange={(value) => updateCell(cell.id, value)}
 					/>
 				</Resizable>
-				<Preview code={code} err={err} />
+				{bundle && <Preview code={bundle.code} err={bundle.err} />}
 			</div>
 		</Resizable>
 	)
